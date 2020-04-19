@@ -23,7 +23,7 @@ def predict():
 
         data = product_name + ' ' + description
 
-        return_data = prediction(data,model,mb,v)
+#         return_data = prediction(data,model,mb,v)
 
     
         return jsonify(return_data)
