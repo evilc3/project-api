@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     
-    return 'hello world'
+    return 'devaition detection api working .....'
 
 @app.route('/predict',methods = ['POST'])
 def predict():
@@ -23,10 +23,10 @@ def predict():
 
         data = product_name + ' ' + description
 
-        # return_data = prediction(data,model,mb,v)
+        return_data = prediction(data,model,mb,v)
 
     
-        return jsonify(data)
+        return jsonify(return_data)
     except Exception:
         return 'some error has occured' + Exception.__str__
 
@@ -34,8 +34,8 @@ def predict():
 if __name__ == '__main__':
 
 
-    model = pk.load(open("../model/model.pkl","rb"))
-    mb = pk.load(open("../model/label.pkl","rb"))
-    v = pk.load(open("../model/vect.pkl","rb"))
+    model = pk.load(open("model/model.pkl","rb"))
+    mb = pk.load(open("model/label.pkl","rb"))
+    v = pk.load(open("model/vect.pkl","rb"))
 
     app.run(threaded=True, port=5000)
