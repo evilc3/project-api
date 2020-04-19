@@ -14,7 +14,7 @@ def home():
 @app.route('/predict',methods = ['POST'])
 def predict():
 
-    try:
+  
         json =  request.get_json()
 
 
@@ -23,12 +23,11 @@ def predict():
 
         data = product_name + ' ' + description
 
-        # return_data = prediction(data,model,mb,v)
+        return_data = prediction(data,model,mb,v)
 
     
-        return jsonify(data)
-    except Exception:
-        return 'some error has occured' + Exception.__str__
+        return jsonify(return_data)
+    
 
 
 if __name__ == '__main__':
@@ -38,4 +37,4 @@ if __name__ == '__main__':
     mb = pk.load(open("model/label.pkl","rb"))
     v = pk.load(open("model/vect.pkl","rb"))
 
-    app.run(threaded=True, port=5000)
+    app.run()
