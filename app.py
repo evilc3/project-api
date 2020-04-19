@@ -21,7 +21,9 @@ def predict():
         description = json['description']
 
         data = product_name + ' ' + description
-
+        model = pk.load(open("model/model.pkl","rb"))
+        mb = pk.load(open("model/label.pkl","rb"))
+        v = pk.load(open("model/vect.pkl","rb"))
         return_data = prediction(data,model,mb,v)
 
     
@@ -32,8 +34,6 @@ def predict():
 if __name__ == '__main__':
 
 
-    model = pk.load(open("model/model.pkl","rb"))
-    mb = pk.load(open("model/label.pkl","rb"))
-    v = pk.load(open("model/vect.pkl","rb"))
+    
 
     app.run(threaded=True, port=5000)
