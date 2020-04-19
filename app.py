@@ -23,10 +23,10 @@ def predict():
 
         data = product_name + ' ' + description
 
-        return_data = prediction(data,model,mb,v)
+        # return_data = prediction(data,model,mb,v)
 
     
-        return return_data
+        return jsonify(data)
     except Exception:
         return 'some error has occured' + Exception.__str__
 
