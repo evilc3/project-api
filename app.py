@@ -14,26 +14,38 @@ def home():
 @app.route('/predict',methods = ['POST'])
 def predict():
 
-        json =  request.get_json()
+    model = None
+    mb = None
+    v = None
+
+    try:
+        data =  request.get_json()
+
+        if type(data) != str:
+            raise ValueError('Input should be string')
 
 
-        product_name = json['product_name']
-        description = json['description']
-
-        data = product_name + ' ' + description
         model = pk.load(open("model/model.pkl","rb"))
         mb = pk.load(open("model/label.pkl","rb"))
         v = pk.load(open("model/vect.pkl","rb"))
+
+
+        if model == None or mb == None or v == None:
+            raise ValueError('Cannot load data...')
+
         return_data = prediction(data,model,mb,v)
 
     
         return jsonify(return_data)
-  
+
+    except ValueError as ve:
+        
+        return  str(ve)
 
 
 if __name__ == '__main__':
 
 
-    
+   
 
-    app.run(threaded=True, port=5000)
+    app.run()
