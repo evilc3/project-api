@@ -8,5 +8,8 @@ MarkupSafe==1.1.1
 numpy==1.18.2
 scikit-learn==0.22.2.post1
 scipy==1.4.1
-sklearn==0.0
 Werkzeug==1.0.1
+pandas==0.24.2
+nltk>=3.4.5
+xlrd>=1.0.0
+
