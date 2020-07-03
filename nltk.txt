@@ -1,0 +1,6 @@
+stopwords
+porter_test
+punkt
+snowball_data
+tagsets
+universal_tagset
